@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <label for="input1">请输入数字</label>
+    <input id="input1" autofocus="autofocus" type="text" title="请输入数字" />
+    <input id="input2" type="text" title="请输入数字" />
+    <select id="sel">
+        <option select="selected" value="add">+</option>
+        <option value="subtract">-</option>
+        <option value="multiply">×</option>
+        <option value="divide">÷</option>
+    </select>
+    <button id="btn" onclick="cal()">计算</button>
+    <label for="s">结果为：</label>
+    <span id="s"></span>
+    <script type="text/javascript">
+    function cal() {
+        var x = document.getElementById("input1").value;
+        var y = document.getElementById("input2").value;
+        var regexp = /^([+-]?)\d*\.?\d+$/;
+        if (regexp.test(x) && regexp.test(y)) { //用正则表达式检验输入内容是不是数字
+            switch (document.getElementById("sel").value) { //根据运算符执行相应计算
+                case "add":
+                    var result = Number(x) + Number(y);
+                    break;
+                case "subtract":
+                    var result = Number(x) - Number(y);
+                    break;
+                case "multiply":
+                    var result = Number(x) * Number(y);
+                    break;
+                case "divide":
+                    var result = Number(x) / Number(y);
+                    break;
+            }
+            document.getElementById("s").innerHTML = result;
+        } else {
+            alert("输入有误");
+        };
+    }
+    </script>
+</body>
+
+</html>
